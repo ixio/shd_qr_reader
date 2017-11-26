@@ -12,6 +12,9 @@
     },
     "phonegap-plugin-barcodescanner": {
       "PACKAGE_NAME": "com.sp.qrcode"
+    },
+    "cordova-plugin-tts": {
+      "PACKAGE_NAME": "com.sp.qrcode"
     }
   },
   "dependent_plugins": {}

@@ -34,6 +34,11 @@
                             if(result.format == "QR_CODE")
                             {
                                 document.getElementById('qr-code').innerHTML = result.text
+                                TTS.speak({
+                                    text: result.text,
+                                    locale: 'fr-FR',
+                                    rate: 0.75
+                                }, function () {}, function (reason) {alert(reason);});
                             }
                         }
                     },
