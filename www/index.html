@@ -17,14 +17,14 @@
                 <p>
                     <a target="_blank" href="javascript:scan();" style="text-decoration: none"><button>Scan</button></a></a>
                 </p>
-                <p id='qr-code'>No QR-Code read</p>
+                <p id='qr-code'>Pas de QR-Code lu</p>
             </div>
         </div>
 
-        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-        <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script type="text/javascript" src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
         <script type="text/javascript" src="cordova.js"></script>
-        <script>
+        <script type="text/javascript">
             function scan()
             {
                 cordova.plugins.barcodeScanner.scan(
@@ -33,12 +33,13 @@
                         {
                             if(result.format == "QR_CODE")
                             {
-                                document.getElementById('qr-code').innerHTML = result.text
+                                document.getElementById('qr-code').innerHTML = "<b>Dernier code lu:</b> " + result.text
                                 TTS.speak({
                                     text: result.text,
                                     locale: 'fr-FR',
                                     rate: 0.75
                                 }, function () {}, function (reason) {alert(reason);});
+                                scan()
                             }
                         }
                     },
@@ -47,6 +48,9 @@
                     }
                );
             }
+            document.addEventListener("deviceready", function () {
+                scan()
+            })
         </script>
     </body>
 </html>
